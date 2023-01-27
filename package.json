@@ -6,7 +6,15 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "vitest --passWithNoTests",
+    "test:staged": "npm run test --findRelatedTests",
+    "test:push": "npm run test --watch=false --coverage",
+    "lint-staged": "lint-staged",
+    "type-check": "tsc --noEmit",
+    "full-lint": "eslint src --ext .ts,.tsx,.js,.jsx --fix --max-warnings=0",
+    "prepare": "husky install",
+    "postinstall": "npm run prepare"
   },
   "dependencies": {
     "react": "^18.2.0",
