@@ -14,6 +14,7 @@ import 'reactflow/dist/style.css';
 import { zinc } from 'tailwindcss/colors';
 import { DefaultEdge } from './components/Edges/DefaultEdge';
 import { Square } from './components/Nodes/Square';
+import * as Toolbar from '@radix-ui/react-toolbar';
 
 const NODE_TYPES = {
   square: Square,
@@ -74,6 +75,12 @@ function App() {
         <Background gap={12} size={2} color={zinc[200]} />
         <Controls />
       </ReactFlow>
+
+      <Toolbar.Root
+        className={
+          'fixed bottom-20 left-1/2 -translate-x-1/2 bg-white rounded-2xl shadow-lg border border-zinc-300 px-8 h-20 w-96 overflow-hidden'
+        }
+      ></Toolbar.Root>
     </div>
   );
 }
