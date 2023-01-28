@@ -48,7 +48,7 @@ const INITIAL_NODES = [
 
 function App() {
   const [edges, setEdges, onEdgesChange] = useEdgesState([]);
-  const [nodes, _setNodes, onNodesChange] = useNodesState(INITIAL_NODES);
+  const [nodes, setNodes, onNodesChange] = useNodesState(INITIAL_NODES);
 
   const onConnect = useCallback(
     (connection: Connection) => {
@@ -56,6 +56,21 @@ function App() {
     },
     [setEdges],
   );
+
+  function addSquareNode() {
+    setNodes((nodes) => [
+      ...nodes,
+      {
+        id: crypto.randomUUID(),
+        type: 'square',
+        position: {
+          x: 750,
+          y: 350,
+        },
+        data: {},
+      },
+    ]);
+  }
 
   return (
     <div className={'w-screen h-screen'}>
@@ -82,6 +97,7 @@ function App() {
         }
       >
         <Toolbar.Button
+          onClick={addSquareNode}
           className={
             'w-32 h-32 bg-violet-500 mt-6 rounded transition-all duration-300 hover:-translate-y-2'
           }
