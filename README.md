@@ -80,12 +80,12 @@ $ git clone https://github.com/AlexMarquesAlves/ui-figma-jam
 $ cd ui-figma-jam
 
 # Install dependencies
-$ yarn
+$ npm i
 
 # Run the project
-$ yarn start
+$ npm run dev
 
-# The server will initialize in the <http://localhost:3000>
+# The server will initialize in the <http://localhost:5173>
 ```
 
 ## :memo: License
