@@ -12,10 +12,15 @@ import ReactFlow, {
 } from 'reactflow';
 import 'reactflow/dist/style.css';
 import { zinc } from 'tailwindcss/colors';
+import { DefaultEdge } from './components/Edges/DefaultEdge';
 import { Square } from './components/Nodes/Square';
 
 const NODE_TYPES = {
   square: Square,
+};
+
+const EDGE_TYPES = {
+  default: DefaultEdge,
 };
 
 const INITIAL_NODES = [
@@ -55,12 +60,16 @@ function App() {
     <div className={'w-screen h-screen'}>
       <ReactFlow
         nodeTypes={NODE_TYPES}
+        edgeTypes={EDGE_TYPES}
         nodes={nodes}
         onNodesChange={onNodesChange}
         edges={edges}
         onEdgesChange={onEdgesChange}
         onConnect={onConnect}
         connectionMode={ConnectionMode.Loose}
+        defaultEdgeOptions={{
+          type: 'default',
+        }}
       >
         <Background gap={12} size={2} color={zinc[200]} />
         <Controls />
