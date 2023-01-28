@@ -1,8 +1,13 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import { useCallback } from 'react';
 import ReactFlow, {
+  addEdge,
   Background,
+  Connection,
   ConnectionMode,
   Controls,
   Node,
+  useEdgesState,
 } from 'reactflow';
 import 'reactflow/dist/style.css';
 import { zinc } from 'tailwindcss/colors';
@@ -35,11 +40,23 @@ const INITIAL_NODES = [
 ]satisfies Node[];
 
 function App() {
+  const [edges, setEdges, onEdgesChange] = useEdgesState([]);
+
+  const onConnect = useCallback(
+    (connection: Connection) => {
+      return setEdges((edges) => addEdge(connection, edges));
+    },
+    [setEdges],
+  );
+
   return (
     <div className={'w-screen h-screen'}>
       <ReactFlow
         nodeTypes={NODE_TYPES}
         nodes={INITIAL_NODES}
+        edges={edges}
+        onEdgesChange={onEdgesChange}
+        onConnect={onConnect}
         connectionMode={ConnectionMode.Loose}
       >
         <Background gap={12} size={2} color={zinc[200]} />
