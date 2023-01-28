@@ -1,10 +1,23 @@
+import { NodeResizer } from '@reactflow/node-resizer';
 import { Handle, NodeProps, Position } from 'reactflow';
+import '@reactflow/node-resizer/dist/style.css';
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const Square = (_props: NodeProps) => {
   return (
     <>
-      <div className={'bg-violet-500 rounded w-[200px] h-[200px]'}>
+      <div
+        className={
+          'bg-violet-500 rounded h-full w-full min-w-[200px] min-h-[200px]'
+        }
+      >
+        <NodeResizer
+          minWidth={200}
+          minHeight={200}
+          isVisible={_props.selected}
+          lineClassName={'border-blue-400'}
+          handleClassName={'h-3 w-3 bg-white border-2 rounded border-blue-400'}
+        />
+
         <Handle
           id="top"
           type="source"
