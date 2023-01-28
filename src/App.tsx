@@ -8,6 +8,7 @@ import ReactFlow, {
   Controls,
   Node,
   useEdgesState,
+  useNodesState,
 } from 'reactflow';
 import 'reactflow/dist/style.css';
 import { zinc } from 'tailwindcss/colors';
@@ -41,6 +42,7 @@ const INITIAL_NODES = [
 
 function App() {
   const [edges, setEdges, onEdgesChange] = useEdgesState([]);
+  const [nodes, setNodes, onNodesChange] = useNodesState([]);
 
   const onConnect = useCallback(
     (connection: Connection) => {
