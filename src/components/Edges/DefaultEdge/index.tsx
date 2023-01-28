@@ -27,7 +27,7 @@ export const DefaultEdge = ({
       <path
         id={id}
         style={style}
-        className="react-flow__edge-path"
+        className="react-flow__edge-path stroke-2 stroke-zinc-300"
         d={edgePath}
         markerEnd={markerEnd}
       />
